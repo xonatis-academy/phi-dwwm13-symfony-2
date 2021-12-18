@@ -1,0 +1,82 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+	<div class="container-fluid">
+		<a class="navbar-brand" href="#">MEGA</a>
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav me-auto mb-2 mb-lg-0">
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ path('home') }}">Accueil</a>
+				</li>
+				<li class="nav-item">
+					<a class="nav-link active" aria-current="page" href="{{ path('categorie_index') }}">Les catégories</a>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Les membres
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li>
+							<a class="dropdown-item" href="{{ path('user_index', {'type': 'auteur'}) }}">Auteur(e)s</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('user_index', {'type': 'critique'}) }}">Critiques</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('user_index', {'type': 'estimateur'}) }}">Estimateur(e)s</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Mon espace
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li>
+							<a class="dropdown-item" href="{{ path('production_new') }}">Ecrire une production</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('production_index') }}">Voir mes productions</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('devis_index') }}">Voir mes demandes de devis</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('panier') }}">Voir mon panier</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('commande_index') }}">Voir mes commandes</a>
+						</li>
+						<li><hr class="dropdown-divider"></li>
+						<li>
+							<a class="dropdown-item" href="{{ path('profile_edit') }}">Mon profil</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item dropdown">
+					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+						Administration
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li>
+							<a class="dropdown-item" href="{{ path('admin_cateogorie_index') }}">Categories</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('admin_production_index') }}">Production</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('admin_commande_index') }}">Commandes</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('admin_devis_index') }}">Devis</a>
+						</li>
+						<li>
+							<a class="dropdown-item" href="{{ path('admin_user_index') }}">Uilisateurs</a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>

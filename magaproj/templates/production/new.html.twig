@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Production{% endblock %}
+
+{% block body %}
+    <h1>Create new Production</h1>
+
+    {{ include('production/_form.html.twig') }}
+
+    <a href="{{ path('production_index') }}">back to list</a>
+{% endblock %}

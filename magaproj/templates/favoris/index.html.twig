@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Production index{% endblock %}
+
+{% block body %}
+    <h1>Mes favoris</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Contenu</th>
+                <th>PrixFinal</th>
+                <th>action</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for production in productions %}
+            <tr>
+                <td>{{ production.id }}</td>
+                <td>{{ production.contenu }}</td>
+                <td>{{ production.prixFinal }}</td>
+                <td>
+                    <a href="{{ path('favoris_delete', {'id': production.id }) }}">Enlever</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

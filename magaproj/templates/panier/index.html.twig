@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PanierController!{% endblock %}
+
+{% block body %}
+<h1>Mon panier</h1>
+
+{% if panier %}
+
+    {% for truc in panier.elements %}
+        <div>
+            {{ truc.production.titre }} : de quantité {{ truc.quantite }}
+        </div>
+    {% endfor %}
+
+{% else %}
+
+    <h1>Wesh, achète quoi</h1>
+
+{% endif %}
+
+<a href="{{ path('panier_clear') }}">Nettoyer mon panier :8</a>
+<a href="{{ path('payment') }}">Payer maintenant</a>
+
+{% endblock %}

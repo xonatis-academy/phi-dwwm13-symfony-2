@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello PaymentController!{% endblock %}
+
+{% block body %}
+<script>
+    (function() {
+        const stripe = Stripe('<votre clé pk ici>');
+        stripe.redirectToCheckout({
+            sessionId: "{{ sessionId }}"
+        });
+    })();
+</script>
+{% endblock %}
