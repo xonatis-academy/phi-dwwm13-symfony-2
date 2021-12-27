@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Service\CaissierService;
+use App\Service\HassenService;
+use App\Service\VendeurService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\HttpFoundation\Session\SessionInterface;
 use Symfony\Component\Routing\Annotation\Route;
 
 class PaymentController extends AbstractController
@@ -12,39 +14,11 @@ class PaymentController extends AbstractController
     /**
      * @Route("/payment", name="payment")
      */
-    public function index(SessionInterface $sessionInterface): Response
+    public function index(HassenService $hassen, VendeurService $odile, CaissierService $manel): Response
     {
-        $panier = $sessionInterface->get('cart');
-
-        /*
-        amount
-        quantity
-        currency 'eur'
-        name
-        */
-
-        $panierChezStripe = [];
-
-        foreach ($panier->elements as $truc) {
-            $elementPourStripe = [
-                'amount' => $truc->quantite * $truc->production->getPrixFinal() * 100,
-                'quantity' => $truc->quantite,
-                'currency' => 'eur',
-                'name' => $truc->production->getTitre(),
-            ];
-            $panierChezStripe[] = $elementPourStripe;
-        }
-
-        $stripe = new \Stripe\StripeClient('<votre clé sk ici>');
-        $session = $stripe->checkout->sessions->create([
-            'success_url' => 'http://localhost:8000/payment/success',
-            'cancel_url' => 'http://localhost:8000/payment/failed',
-            'payment_method_types' => [
-                'card'
-            ],
-            'mode' => 'payment',
-            'line_items' => $panierChezStripe
-        ]);
+        $panier = $hassen->recupererLePanier();
+        $bonDeOdile = $odile->etablirBonDeCommande($panier);
+        $session = $manel->encaisserBonDeCommande($bonDeOdile);
 
         return $this->render('payment/index.html.twig', [
             'sessionId' => $session->id

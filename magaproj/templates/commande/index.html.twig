@@ -22,7 +22,7 @@
                 <td>{{ commande.id }}</td>
                 <td>{{ commande.prixTotal }}</td>
                 <td>{{ commande.isPaid ? 'Yes' : 'No' }}</td>
-                <td>{{ commande.createdAt ? commande.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ commande.createdAt ? commande.createdAt|date('H:i:s d/m/Y') : '' }}</td>
                 <td>{{ commande.paidAt ? commande.paidAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>
                     <a href="{{ path('commande_show', {'id': commande.id}) }}">show</a>
